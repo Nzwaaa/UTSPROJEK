@@ -1,43 +1,48 @@
 package lat.pam.utsproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class ConfirmationActivity : AppCompatActivity() {
+
+    private lateinit var tvFoodNameValue: TextView
+    private lateinit var tvServingsValue: TextView
+    private lateinit var tvOrderingNameValue: TextView
+    private lateinit var tvAdditionalNotesValue: TextView
+    private lateinit var backToMenuButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_confirmation)
 
-        val foodName = intent.getStringExtra("foodName")
-        val servings = intent.getStringExtra("servings")
-        val orderingName = intent.getStringExtra("orderingName")
-        val additionalNotes = intent.getStringExtra("additionalNotes")
+        // Inisialisasi TextView
+        tvFoodNameValue = findViewById(R.id.tvFoodNameValue)
+        tvServingsValue = findViewById(R.id.tvServingsValue)
+        tvOrderingNameValue = findViewById(R.id.tvOrderingNameValue)
+        tvAdditionalNotesValue = findViewById(R.id.tvAdditionalNotesValue)
+        backToMenuButton = findViewById(R.id.backtoMenu)
 
-        val foodNameTextView: TextView = findViewById(R.id.tvFoodName)
-        val servingsTextView: TextView = findViewById(R.id.tvServings)
-        val orderingNameTextView: TextView = findViewById(R.id.tvOrderingName)
-        val notesTextView: TextView = findViewById(R.id.tvAdditionalNotes)
+        // Mengambil data dari Intent
+        val foodName = intent.getStringExtra("foodName") ?: "Unknown Food"
+        val servings = intent.getStringExtra("servings") ?: "0"
+        val orderingName = intent.getStringExtra("orderingName") ?: "Unknown"
+        val additionalNotes = intent.getStringExtra("additionalNotes") ?: "None"
 
-        foodNameTextView.text = "Food Name: $foodName"
-        servingsTextView.text = "Number of Servings: $servings"
-        orderingNameTextView.text = "Ordering Name: $orderingName"
-        notesTextView.text = "Additional Notes: $additionalNotes"
+        // Mengisi nilai ke TextView
+        tvFoodNameValue.text = foodName
+        tvServingsValue.text = servings
+        tvOrderingNameValue.text = orderingName
+        tvAdditionalNotesValue.text = additionalNotes
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-        val backToMenuButton: Button = findViewById(R.id.backtoMenu)
+        // Mengatur OnClickListener untuk tombol "Selesai"
         backToMenuButton.setOnClickListener {
-            finish() // or start another activity if needed
+            // Pindah ke ListFoodActivity
+            val intent = Intent(this, ListFoodActivity::class.java)
+            startActivity(intent)
+            finish() // Menutup ConfirmationActivity agar tidak kembali ke halaman ini
         }
     }
 }

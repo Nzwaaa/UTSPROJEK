@@ -5,111 +5,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pink_pastel"
-    tools:context=".MainActivity">
+    android:background="@color/pink_light"
+    android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:contentDescription="@string/des"
-        android:src="@drawable/login"
+    <!-- Judul Halaman Register -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/buat_akun_baru"
+        android:layout_marginTop="125dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="140dp" />
+        android:gravity="center" />
 
-    <TextView
-        android:id="@+id/appName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/makan_yukkk"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-light"
-        android:letterSpacing="0.15"
-        android:shadowColor="#D1C4E9"
-        android:textColor="@color/black"
-        android:shadowDx="1.5"
-        android:shadowDy="1.5"
-        android:shadowRadius="4"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-
-
+    <!-- CardView Container for Form -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:elevation="8dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="6dp"
-        app:layout_constraintTop_toBottomOf="@id/appName"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="32dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:orientation="vertical"
-            android:padding="24dp"
-            android:paddingTop="50dp">
+            android:padding="24dp">
 
+            <!-- Field Username -->
             <EditText
-                android:id="@+id/etUsername"
+                android:id="@+id/etRegisterUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:autofillHints=""
                 android:background="@drawable/edittext_background"
                 android:drawableStart="@drawable/ic_person"
-                android:hint="@string/hint_username"
+                android:drawablePadding="12dp"
+                android:hint="Username"
                 android:inputType="text"
                 android:padding="12dp"
                 android:textColorHint="#757575"
-                tools:ignore="VisualLintTextFieldSize" />
+                tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
 
+            <!-- Field Password -->
             <EditText
-                android:id="@+id/etPassword"
+                android:id="@+id/etRegisterPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:autofillHints=""
                 android:background="@drawable/edittext_background"
                 android:drawableStart="@drawable/ic_lock"
-                android:hint="@string/hint_password"
+                android:drawablePadding="12dp"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:padding="12dp"
                 android:textColorHint="#757575"
                 tools:ignore="VisualLintTextFieldSize" />
 
+            <!-- Field Konfirmasi Password -->
+            <EditText
+                android:id="@+id/etRegisterConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:autofillHints=""
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="12dp"
+                android:hint="@string/konfirmasi_password"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColorHint="#757575"
+                tools:ignore="VisualLintTextFieldSize" />
 
+            <!-- Tombol Register -->
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/pink_pastel"
-                android:text="@string/login"
+                android:text="@string/daftar"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
+                android:padding="12dp"
                 tools:ignore="VisualLintButtonSize" />
-
-            <TextView
-                android:id="@+id/tvRegister"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:minHeight="48dp"
-                android:text="@string/register"
-                android:textColor="#D81B60" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

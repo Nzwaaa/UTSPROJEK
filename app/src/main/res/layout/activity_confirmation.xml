@@ -1,52 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/pink_pastel"
+    android:gravity="center">
 
+    <!-- Nama Makanan -->
+    <ImageView
+        android:id="@+id/ivFoodImage"
+        android:layout_width="100dp"
+        android:layout_gravity="center"
+        android:layout_height="100dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/todo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/order" />
+
+    <!-- Judul Halaman -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Order Confirmation"
+        android:text="@string/order_confirmation"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"/>
 
-    <TextView
-        android:id="@+id/tvFoodName"
-        android:layout_width="wrap_content"
+    <!-- Kotak untuk Konten -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_margin="16dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/tvServings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvOrderingName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp"/>
+            <!-- Nama Makanan -->
+            <TextView
+                android:id="@+id/tvFoodName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nama_makanan"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/black"/>
 
-    <TextView
-        android:id="@+id/tvAdditionalNotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
+            <TextView
+                android:id="@+id/tvFoodNameValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/batagor"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:background="@drawable/edittext_background"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/black"/>
 
-    <Button
-        android:id="@+id/backtoMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back to Menu" />
+            <!-- Jumlah Porsi -->
+            <TextView
+                android:id="@+id/tvServings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/jumlah_pesanan"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tvServingsValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_3"
+                android:gravity="center"
+                android:background="@drawable/edittext_background"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/black"/>
+
+            <!-- Nama Pemesan -->
+            <TextView
+                android:id="@+id/tvOrderingName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nama_pemesan"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tvOrderingNameValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nazwa"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:background="@drawable/edittext_background"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/black"/>
+
+            <!-- Catatan Tambahan -->
+            <TextView
+                android:id="@+id/tvAdditionalNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/note_tambahan"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tvAdditionalNotesValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tanpa_sambal"
+                android:gravity="center"
+                android:background="@drawable/edittext_background"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/black"/>
+
+            <!-- Catatan review -->
+
+            <TextView
+                android:id="@+id/tvreview"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/terima_kasih_telah_memesan_nklik_selesai_untuk_kembali_ke_menu_utama"
+                android:textColor="#DD2C00"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck" />
+
+            <Button
+                android:id="@+id/backtoMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/selesai"
+                android:backgroundTint="@color/pink_pastel"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="VisualLintButtonSize" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
